@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import {ReactComponent as AviasalesLogo} from "..//Logo.svg";
+import classes from './App.module.scss';
 import TicketList from "../TicketList";
 import TransferFilter from "../TransferFilter";
 import Filter from "../Filter";
@@ -37,7 +38,7 @@ function App() {
    ])
   
   return (
-    <div className="App">
+    <div className={classes.App}>
       <AviasalesLogo />
       <TransferFilter />
       <Filter />
