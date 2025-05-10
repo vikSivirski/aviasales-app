@@ -1,24 +1,26 @@
-import { useState } from "react"
+import { useState } from "react";
+
+import classes from "./Filter.module.scss"
 
 const Filter = () => {
-  const [filterButtons, setfilterButtons] = useState([
+  const [filterButtons, setFilterButtons] = useState([
     {
       filterName: "САМЫЙ ДЕШЕВЫЙ",
-      selcted: true
+      selected: true
     },
     {
       filterName: "САМЫЙ БЫСТРЫЙ",
-      selcted: false
+      selected: false
     },
     {
       filterName: "ОПТИМАЛЬНЫЙ",
-      selcted: false
+      selected: false
     }
   ]);
   const filterList = filterButtons.map((item) => {
     return (
-      <li>
-        <button>
+      <li className={classes.filterListItem}>
+        <button className={item.selected === true? `${classes.filterButton} ${classes.activeFilterButton}` : classes.filterButton}>
           {item.filterName}
         </button>
       </li>
@@ -26,7 +28,7 @@ const Filter = () => {
   });
 
   return (
-    <ul>
+    <ul className={classes.filterList}>
       {filterList}
     </ul>
   )

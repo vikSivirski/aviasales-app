@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import {ReactComponent as AviasalesLogo} from "..//Logo.svg";
+import { ReactComponent as AviasalesLogo } from "../../assets/Logo.svg";
 import classes from './App.module.scss';
 import TicketList from "../TicketList";
 import TransferFilter from "../TransferFilter";
 import Filter from "../Filter";
 
 function App() {
-   const [ticketsData, setTicketsData] = useState([
+  const [ticketsData, setTicketsData] = useState([
     {
       price: 13400,
       longTimeRange: "10:45 - 08:00",
@@ -35,14 +35,18 @@ function App() {
       longTravelTransfer: "HKG, JNB",
       shortTravelTransfer: "HKG"
     },
-   ])
-  
+  ])
+
   return (
     <div className={classes.App}>
       <AviasalesLogo />
-      <TransferFilter />
-      <Filter />
-      <TicketList ticketsData={ticketsData}/>
+      <div className={classes.container}>
+        <TransferFilter />
+        <div className={classes.ticketBlock}>
+          <Filter />
+          <TicketList ticketsData={ticketsData} />
+        </div>
+      </div>
     </div>
   );
 }

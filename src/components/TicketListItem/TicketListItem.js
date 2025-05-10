@@ -1,3 +1,5 @@
+import classes from "./TicketListItem.module.scss"
+
 const TicketListItem = ({
 	price, 
 	longTimeRange, 
@@ -8,34 +10,34 @@ const TicketListItem = ({
 	shortTravelTransfer
 }) => {
 	return (
-		<li>
-			<p>{price}</p>
-			<div className="long-travel-info">
+		<li className={classes.cardTicket}>
+			<p className={classes.price}>{price}</p>
+			<div className={classes.travelInfo}>
 				<div>
-					<p className="info-label">MOW – HKT</p>
-					<p className="info">{longTimeRange}</p>
+					<p className={classes.infoLabel}>MOW – HKT</p>
+					<p className={classes.info}>{longTimeRange}</p>
 				</div>
 				<div>
-					<p className="info-label">В ПУТИ</p>
-					<p className="info">{longTravelTime}</p>
+					<p className={classes.infoLabel}>В ПУТИ</p>
+					<p className={classes.info}>{longTravelTime}</p>
 				</div>
 				<div>
-					<p className="info-label">2 ПЕРЕСАДКИ</p>
-					<p className="info">{longTravelTransfer}</p>
+					<p className={classes.infoLabel}>2 ПЕРЕСАДКИ</p>
+					<p className={classes.info}>{longTravelTransfer}</p>
 				</div>
 			</div>
-			<div className="short-travel-info">
+			<div className={classes.travelInfo}>
 				<div>
-					<p className="info-label">MOW – HKT</p>
-					<p className="info">{shortTimeRange}</p>
+					<p className={classes.infoLabel}>MOW – HKT</p>
+					<p className={classes.info}>{shortTimeRange}</p>
 				</div>
 				<div>
-					<p className="info-label">В ПУТИ</p>
-					<p className="info">{shortTravelTime}</p>
+					<p className={classes.infoLabel}>В ПУТИ</p>
+					<p className={classes.info}>{shortTravelTime}</p>
 				</div>
 				<div>
-					<p className="info-label">2 ПЕРЕСАДКИ</p>
-					<p className="info">{shortTravelTransfer}</p>
+					<p className={classes.infoLabel}>2 ПЕРЕСАДКИ</p>
+					<p className={classes.info}>{shortTravelTransfer}</p>
 				</div>
 			</div>
 		</li>
