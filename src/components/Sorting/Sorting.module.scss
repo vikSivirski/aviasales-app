@@ -1,26 +1,26 @@
 @use "../../styles/variables" as *;
 
-.filterList {
+.sortingList {
 	display: flex;
 	width: 100%;
 	margin-bottom: 20px;
 }
 
-.filterListItem {
+.sortingListItem {
 	width: 33%;
 
-	&:first-child .filterButton {
+	&:first-child .sortingButton {
 		border-top-left-radius: 8px;
 		border-bottom-left-radius: 8px;
 	}
 
-	&:last-child .filterButton {
+	&:last-child .sortingButton {
 		border-top-right-radius: 8px;
 		border-bottom-right-radius: 8px;
 	}
 }
 
-.filterButton {
+.sortingButton {
 	width: 100%;
 	height: 50px;
 	padding: 15px;
@@ -29,7 +29,7 @@
 	line-height: 20px;
 	color: $base-text-color;
 	border: 1px solid $light-gray;
-	transition: background-color 0.3s ease, color 0.3s ease;
+	transition: background-color 0.15s ease, color 0.3s ease;
 
 	&:hover {
 		background-color: $hover-color;
@@ -42,7 +42,7 @@
 	}
 }
 
-.activeFilterButton {
+.activeSortingButton {
 	width: 100%;
 	height: 50px;
 	padding: 15px;
@@ -51,4 +51,9 @@
 	line-height: 20px;
 	color: white;
 	background-color: $primary-color;
+
+	&:hover {
+		color: white;
+		background-color: $hover-primary-color;
+	}
 }

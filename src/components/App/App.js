@@ -4,7 +4,7 @@ import { ReactComponent as AviasalesLogo } from "../../assets/Logo.svg";
 import classes from './App.module.scss';
 import TicketList from "../TicketList";
 import TransferFilter from "../TransferFilter";
-import Filter from "../Filter";
+import Sorting from "../Sorting";
 
 function App() {
   const [ticketsData, setTicketsData] = useState([
@@ -43,7 +43,7 @@ function App() {
       <div className={classes.container}>
         <TransferFilter />
         <div className={classes.ticketBlock}>
-          <Filter />
+          <Sorting />
           <TicketList ticketsData={ticketsData} />
         </div>
       </div>
