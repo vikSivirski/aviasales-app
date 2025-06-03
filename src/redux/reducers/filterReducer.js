@@ -1,9 +1,9 @@
 const initialState = {
-	all: false,
-	noTransfers: false,
-	oneTransfers: false,
-	twoTransfers: false,
-	threeTransfers: false
+	all: true,
+	noTransfers: true,
+	oneTransfers: true,
+	twoTransfers: true,
+	threeTransfers: true
 };
 
 const filterReducer = (state = initialState, action) => {

@@ -1,27 +1,37 @@
-import TicketListItem from "../TicketListItem"
+import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+
+import classes from "./TicketList.module.scss";
+import TicketListItem from "../TicketListItem";
 
 const TicketList = ({ ticketsData }) => {
-	const ticketItems = ticketsData.map((item) => {
+	const visibleCount = useSelector((state) => state.moreTickets);
+	const dispatch = useDispatch();
+
+	const showMoreTickets = () => {
+		dispatch({type: "SHOW_MORE_TICKETS"});
+	}
+
+	const ticketItems = ticketsData.slice(0, visibleCount).map((item) => {
 		const outbound = item.segments[0];
 		const inbound = item.segments[1];
 
-		const date = new Date(outbound.date);
-		const departureTime = date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+		const flightTimeRange = (direction) => {
+			const date = new Date(direction.date);
+			const departureTime = date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
-		const arivalDate = new Date(date.getTime() + outbound.duration * 60000);
-		const arivalTime = arivalDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+			const arivalDate = new Date(date.getTime() + direction.duration * 60000);
+			const arivalTime = arivalDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
-		const backDate = new Date(inbound.date);
-		const backDepartureTime = backDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+			return `${departureTime} - ${arivalTime}`;
+		}
 
-		const backArivalDate = new Date(backDate.getTime() + inbound.duration * 60000);
-		const backArivalTime = backArivalDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+		const formatFlightTime = (direction) => {
+			const hours = Math.floor(direction.duration / 60);
+			const minutes = direction.duration % 60;
 
-		const hours = Math.floor(outbound.duration / 60);
-		const minutes = outbound.duration % 60;
-
-		const backHours = Math.floor(inbound.duration / 60);
-		const backMinutes = inbound.duration % 60;
+			return `${hours}ч ${minutes}м`;
+		}
 
 		const transferCounter = (direction) => {
 			if(direction.stops.length === 0) {
@@ -42,10 +52,10 @@ const TicketList = ({ ticketsData }) => {
 				price={item.price}
 				direction={`${outbound.origin} - ${outbound.destination}`}
 				returnDirection={`${inbound.origin} - ${inbound.destination}`}
-				toFlightTime={`${departureTime} - ${arivalTime}`}
-				backFlightTime={`${backDepartureTime} - ${backArivalTime}`}
-				travelTime={`${hours}ч ${minutes}м`}
-				backTravelTime={`${backHours}ч ${backMinutes}м`}
+				toFlightTime={flightTimeRange(outbound)}
+				backFlightTime={flightTimeRange(inbound)}
+				travelTime={formatFlightTime(outbound)}
+				backTravelTime={formatFlightTime(inbound)}
 				outboundTransfer={transferCounter(outbound)}
 				outbondStops={stopsFormat(outbound)}
 				inboundTransfer={transferCounter(inbound)}
@@ -53,8 +63,12 @@ const TicketList = ({ ticketsData }) => {
 			/>
 		)
 	})
+
 	return (
-		<ul>{ticketItems}</ul>
+		<React.Fragment>
+			<ul>{ticketItems}</ul>
+			<button className={classes.btn} onClick={showMoreTickets}>ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ</button>
+		</React.Fragment>
 	)
 }
 

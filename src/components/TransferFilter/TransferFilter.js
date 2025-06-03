@@ -5,6 +5,7 @@ import classes from './TransferFilter.module.scss'
 const TransferFilter = () => {
 	const filters = useSelector((state) => state.filter);
 	const dispatch = useDispatch();
+
 	const transferCheckboxes = [
 		{label: "Все", key: "all"},
 		{label: "Без пересадок", key: "noTransfers"},
