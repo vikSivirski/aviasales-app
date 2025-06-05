@@ -13,8 +13,9 @@ const Sorting = () => {
   }
 
   const sortingList = sortingButtons.map((sortingName) => {
+    const buttonId = crypto.randomUUID();
     return (
-      <li key={crypto.randomUUID}className={classes.sortingListItem}>
+      <li key={buttonId}className={classes.sortingListItem}>
         <button className={
             sortingName === currentSorting
             ? `${classes.sortingButton} ${classes.activeSortingButton}`

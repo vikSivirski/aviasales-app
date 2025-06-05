@@ -15,6 +15,7 @@ const TicketList = ({ ticketsData }) => {
 	const ticketItems = ticketsData.slice(0, visibleCount).map((item) => {
 		const outbound = item.segments[0];
 		const inbound = item.segments[1];
+		const itemId = crypto.randomUUID();
 
 		const flightTimeRange = (direction) => {
 			const date = new Date(direction.date);
@@ -49,7 +50,9 @@ const TicketList = ({ ticketsData }) => {
 
 		return (
 			<TicketListItem
+				key={itemId}
 				price={item.price}
+				carrier={item.carrier}
 				direction={`${outbound.origin} - ${outbound.destination}`}
 				returnDirection={`${inbound.origin} - ${inbound.destination}`}
 				toFlightTime={flightTimeRange(outbound)}

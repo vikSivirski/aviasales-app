@@ -2,6 +2,7 @@ import classes from "./TicketListItem.module.scss"
 
 const TicketListItem = ({
 	price,
+	carrier,
 	direction,
 	returnDirection,
 	toFlightTime, 
@@ -15,7 +16,10 @@ const TicketListItem = ({
 }) => {
 	return (
 		<li className={classes.cardTicket}>
-			<p className={classes.price}>{price}</p>
+			<div className={classes.priceBlock}>
+				<p className={classes.price}>{price}</p>
+				<img src={`https://pics.avs.io/99/36/${carrier}.png`} />
+			</div>
 			<div className={classes.travelInfo}>
 				<div>
 					<p className={classes.infoLabel}>{direction}</p>
