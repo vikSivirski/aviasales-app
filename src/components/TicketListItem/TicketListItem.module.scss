@@ -1,44 +1,44 @@
-@use "../../styles/variables" as *;
+@use '../../styles/variables' as *;
 
 .cardTicket {
-    display: block;
-    width: 100%;
-    padding: 20px 20px 10px 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 100%;
+  padding: 20px 20px 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .priceBlock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .price {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 24px;
-    color: $primary-color;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  color: $primary-color;
 }
 
 .travelInfo {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .infoLabel {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 18px;
-    color: $dim-text-color;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: $dim-text-color;
 }
 
 .info {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 21px;
-    color: $base-text-color;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 21px;
+  color: $base-text-color;
 }

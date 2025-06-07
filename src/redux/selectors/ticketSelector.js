@@ -7,11 +7,11 @@ const getFilteredAndSortedTickets = (state) => {
     noTransfers: 0,
     oneTransfers: 1,
     twoTransfers: 2,
-    threeTransfers: 3
+    threeTransfers: 3,
   };
 
   const allowedStops = Object.entries(filters)
-    .filter(([key, value]) => key !== "all" && value)
+    .filter(([key, value]) => key !== 'all' && value)
     .map(([key]) => stopsMap[key]);
 
   const filteredTickets = tickets.filter((ticket) => {
@@ -21,16 +21,16 @@ const getFilteredAndSortedTickets = (state) => {
   const sortingTickets = (data, sortingType) => {
     const dataCopy = [...data];
 
-    if (sortingType === "САМЫЙ ДЕШЕВЫЙ") {
-      return dataCopy.sort((a, b) => a.price - b.price)
-    } else if (sortingType === "САМЫЙ БЫСТРЫЙ") {
+    if (sortingType === 'САМЫЙ ДЕШЕВЫЙ') {
+      return dataCopy.sort((a, b) => a.price - b.price);
+    } else if (sortingType === 'САМЫЙ БЫСТРЫЙ') {
       return dataCopy.sort((a, b) => {
         const aTotal = a.segments[0].duration + a.segments[1].duration;
         const bTotal = b.segments[0].duration + b.segments[1].duration;
 
         return aTotal - bTotal;
       });
-    } else if (sortingType === "ОПТИМАЛЬНЫЙ") {
+    } else if (sortingType === 'ОПТИМАЛЬНЫЙ') {
       return dataCopy.sort((a, b) => {
         const aTotal = a.segments[0].duration + a.segments[1].duration;
         const bTotal = b.segments[0].duration + b.segments[1].duration;
@@ -41,11 +41,11 @@ const getFilteredAndSortedTickets = (state) => {
         return aOptimal - bOptimal;
       });
     }
-  }
+  };
 
   const sortedTickets = sortingTickets(filteredTickets, sorting);
 
-  return sortedTickets
-}
+  return sortedTickets;
+};
 
 export default getFilteredAndSortedTickets;

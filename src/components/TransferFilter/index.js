@@ -1,2 +1,2 @@
-import TransferFilter from "./TransferFilter";
+import TransferFilter from './TransferFilter';
 export default TransferFilter;

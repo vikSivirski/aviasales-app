@@ -1,2 +1,2 @@
-import TicketListItem from "./TicketListItem";
+import TicketListItem from './TicketListItem';
 export default TicketListItem;
